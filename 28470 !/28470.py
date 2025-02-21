@@ -21,3 +21,9 @@ for i in range(N):
         adrenaline += (A - math.floor(E * K) // 10)
 
 print(adrenaline)
+
+# 3             
+# 25 35 33
+# 8 10 12
+# 1.05 1.15 1.25
+# 72
