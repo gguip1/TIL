@@ -13,7 +13,7 @@ liquids = list(map(int, sys.stdin.readline().strip().split()))
 #         merge(arr, l, m, r)
 
 # def merge(arr, l, m, r):
-#     b = [0 for x in range(len(arr))]
+#     b = [0] * (r - l + 1)
 #     i = l
 #     j = m + 1
 #     k = 0
