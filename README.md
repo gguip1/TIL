@@ -1,0 +1,1 @@
+[![Solved.ac프로필](http://mazassumnida.wtf/api/generate_badge?boj=gguip7554)](https://solved.ac/gguip7554})
