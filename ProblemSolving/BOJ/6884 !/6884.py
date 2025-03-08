@@ -24,6 +24,37 @@ for i in range(t):
         else:
             prefixSum.append(prefixSum[x - 1] + arr[x])
 
+## 시간초과 pypy3로 맞은 경우
+# for i in range(t):
+#     Q = list(map(int, sys.stdin.readline().strip().split()))
+#     n = Q[0]
+#     arr = Q[1:1+n]
+    
+#     prefixSum = 0
+#     result = None
+    
+#     for y in range(n):
+#         for x in range(y, n):
+#             if x == y:
+#                 prefixSum = arr[x]
+#             else:
+#                 prefixSum += arr[x]
+#                 if is_prime(prefixSum):
+#                     if result is None:
+#                         result = arr[y:x + 1]
+#                         break
+#                     else:
+#                         if len(result) > len(arr[y:x + 1]):
+#                             result = arr[y:x + 1]
+#                             break
+    
+#     if result:
+#         print(f'Shortest primed subsequence is length {len(result)}:', end=' ')
+#         for r in result:
+#             print(r, end=' ')
+#         print()
+#     else:
+#         print('This sequence is anti-primed.')
 
 ## 시간초과 pypy로는 맞았는데..
 # for i in range(t):
