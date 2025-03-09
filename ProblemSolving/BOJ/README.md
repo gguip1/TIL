@@ -1,8 +1,6 @@
 <div align="center">
-    <a href="https://solved.ac/profile/gguip7554">
-        <img src="https://mazassumnida.wtf/api/generate_badge?boj=gguip7554" height="165"/>
-        <img src="http://mazandi.herokuapp.com/api?handle=gguip7554&theme=dark" height="165"/>
-    </a>
+    <img src="https://mazassumnida.wtf/api/generate_badge?boj=gguip7554" height="165"/>
+    <img src="http://mazandi.herokuapp.com/api?handle=gguip7554&theme=dark" height="165"/>
 </div>
 
 # 📌 태그 설명  
