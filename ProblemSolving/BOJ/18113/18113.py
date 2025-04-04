@@ -1,37 +1,44 @@
 import sys
 
-N, K, M = map(int, sys.stdin.readline().rstrip().split())
-Ls = [int(sys.stdin.readline().rstrip()) for _ in range(N)]
-
-Ls.sort()
-
-left, right = 0, len(Ls) - 1
-mid = len(Ls) // 2
-
-while len(Ls[left:right]) > 1:
-    if Ls[mid] >= K:
-        mid += len(Ls[mid:right])
-        left = mid
-    elif Ls[mid] < K:
-        mid -= len(Ls[left:mid])
-        right = mid
-
-print(Ls[left:right + 1])
-
-# P = 0
-
-# for L in Ls:
-#     if L < 2 * K:
-#         L -= K
-#     elif L <= K:
-#         continue
-#     else:
-#         L -= (2 * K)
+def kimbap(L, K):
+    if L < K:
+        return -1
     
-#     if (L // M) > P:
-#         P = L // M
+    if L < 2 * K:
+        L -= K
+    else:
+        L -= 2 * K
+    
+    return L
+    
 
-# if P == 0:
-#     print(-1)
-# else:
-#     print(P)
+N, K, M = map(int, sys.stdin.readline().rstrip().split())
+
+ks = []
+
+for i in range(N):
+    L = int(sys.stdin.readline().rstrip())
+    
+    k = kimbap(L, K)
+    if k != -1:
+        ks.append(k)
+
+if len(ks) > 0:
+    left = 1
+    right = max(ks)
+
+    P = -1
+
+    while left <= right:
+        mid = (right + left) // 2
+        count = sum(k // mid for k in ks)
+
+        if count >= M:
+            P = mid
+            left = mid + 1
+        elif count < M:
+            right = mid - 1
+            
+    print(P)
+else:
+    print(-1)

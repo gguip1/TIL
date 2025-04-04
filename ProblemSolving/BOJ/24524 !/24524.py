@@ -16,6 +16,7 @@ for sIndex, sValue in enumerate(S):
 print(dp[-1])
 
 ## 시간 초과
+
 # result = 0
 
 # while True:
