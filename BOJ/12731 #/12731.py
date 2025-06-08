@@ -16,14 +16,14 @@ for x in range(N):
         s_HH, s_MM = map(int, s_time.split(':'))
         e_HH, e_MM = map(int, e_time.split(':'))
         
-        heapq.heappush(events, (s_HH * 60 + s_MM, e_HH * 60 + e_MM, 'A'))
+        events.append((s_HH * 60 + s_MM, e_HH * 60 + e_MM, 'A'))
     
     for time in NB_times:
         s_time, e_time = time
         s_HH, s_MM = map(int, s_time.split(':'))
         e_HH, e_MM = map(int, e_time.split(':'))
         
-        heapq.heappush(events, (s_HH * 60 + s_MM, e_HH * 60 + e_MM, 'B'))
+        events.append((s_HH * 60 + s_MM, e_HH * 60 + e_MM, 'B'))
     
     events.sort()
     
