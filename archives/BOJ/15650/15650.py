@@ -1,0 +1,25 @@
+import sys
+
+N, M = map(int, sys.stdin.readline().rstrip().split())
+
+def recursion(elements, depth):
+    if depth == M:
+        for index, element in enumerate(elements):
+            if index != 0:
+                print(element, end=' ')
+        print()
+        return elements
+    else:
+        for _ in range(elements[-1] + 1, N + 1):
+            recursion(elements + [_], depth + 1)
+
+recursion([0], 0)
+
+# def dfs(start, path):
+#     if len(path) == M:
+#         print(*path)
+#         return
+#     for i in range(start, N + 1):
+#         dfs(i + 1, path + [i])
+
+# dfs(1, [])
