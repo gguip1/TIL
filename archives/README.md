@@ -6,4 +6,4 @@
 
 - Git과 GitHub 사용법을 익히는 과정에서 **BOJ 문제 풀이 및 학습 기록**을 남기기 위해 만든 저장소입니다.
 - 개인 프로젝트용으로 **Git 사용법 및 협업 흐름**을 익히는 데 목적이 있었습니다.
-- 현재는 [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub)에 의해 자동 관리됩니다.
+- 충분한 학습 후 일일이 관리하는 것이 번거로워져, 현재는 [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub)에 의해 자동 관리됩니다.
