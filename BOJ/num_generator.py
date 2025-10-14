@@ -3,17 +3,20 @@ import argparse
 
 def num_generator(num):
     dir_name = f'./{num}'
-    file_name = f'{num}.py'
 
     if not os.path.exists(dir_name):
         os.makedirs(dir_name)
-        file_path = os.path.join(dir_name, file_name)
+        file_paths = [
+            os.path.join(dir_name, f'{num}.py'),
+            # os.path.join(dir_name, f'{num}_thinking.md')
+            ]
         
-        if not os.path.exists(file_path):
-            with open(file_path, "w") as file:
-                pass
-        else:
-            print(f'{num}번 문제는 이미 존재합니다.')
+        for file_path in file_paths:
+            if not os.path.exists(file_path):
+                with open(file_path, "w") as file:
+                    pass
+            else:
+                print(f'{num}번 문제는 이미 존재합니다.')
     else:
         print(f'{num}번 문제는 이미 존재합니다.')
 

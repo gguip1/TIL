@@ -9,7 +9,7 @@ vacation = 0
 pre_vacation = deque()
 post_vacation = deque()
 
-for index in range(N)):
+for index in range(N):
     if index == 0:
         pre_vacation.append(wages[index] * X)
     else:

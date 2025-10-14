@@ -13,4 +13,4 @@ for _ in range(N):
         case 'size': print(len(stack))
         case 'empty': print(0) if stack else print(1)
         case 'top':print(stack[-1]) if stack else print(-1)
-        
+    

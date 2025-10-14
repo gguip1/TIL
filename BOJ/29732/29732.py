@@ -8,7 +8,7 @@ for i in range(N):
     if S[i] == 'R':
         for r in range(max(1, i + 1 - K), min(N, i + 1 + K) + 1):
             S[r] = 'R'
-
+            
 count = 0
 for i in range(N):
     if S[i] == 'R':

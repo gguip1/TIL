@@ -10,6 +10,12 @@ for val in range(2, MAX_VALUE):
 for val in range(3, MAX_VALUE):
     dp[val] += dp[val - 3]
 
+T = int(sys.stdin.readline().rstrip())
+
+for _ in range(T):
+    n = int(sys.stdin.readline().rstrip())
+    print(dp[n])
+
 # A1. TLE
 # for val in range(MIN_VALUE, MAX_VALUE):
 #     answer = 0
@@ -36,9 +42,3 @@ for val in range(3, MAX_VALUE):
 #                     queue.append((current_sum + add_val, add_val))
     
 #     dp.append(answer)
-
-T = int(sys.stdin.readline().rstrip())
-
-for _ in range(T):
-    n = int(sys.stdin.readline().rstrip())
-    print(dp[n])

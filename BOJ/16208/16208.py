@@ -2,7 +2,7 @@ import sys
 input = sys.stdin.readline
 n = int(input())
 iron_sticks = list(map(int, input().split()))
-iron_sticks.sort()
+# iron_sticks.sort()
 
 length = sum(iron_sticks)
 
