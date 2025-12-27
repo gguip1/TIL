@@ -1,32 +1,37 @@
 import java.io.*;
 import java.util.*;
-//import java.util.stream.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static int[] a;
+    static int[] memo;
+    static boolean[] vis;
 
+    static int bestEnd(int i) {
+        if (vis[i]) return memo[i];
+        vis[i] = true;
+
+        if (i == 0) return memo[i] = a[0];
+        return memo[i] = Math.max(a[i], a[i] + bestEnd(i - 1));
+    }
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine());
 
-        for (int i = 0; i < T; i++){
+        for (int tc = 0; tc < T; tc++) {
             int N = Integer.parseInt(br.readLine());
+            a = new int[N];
+            memo = new int[N];
+            vis = new boolean[N];
 
             StringTokenizer st = new StringTokenizer(br.readLine());
-            int[] array = new int[N];
-            int idx = 0;
-            while (st.hasMoreTokens()) {
-                array[idx++] = Integer.parseInt(st.nextToken());
+            for (int i = 0; i < N; i++) a[i] = Integer.parseInt(st.nextToken());
+
+            int ans = Integer.MIN_VALUE;
+            for (int i = 0; i < N; i++) {
+                ans = Math.max(ans, bestEnd(i));
             }
-
-            int current_max = array[0];
-            int total_max = array[0];
-
-            for(int j = 1; j < N; j++){
-                current_max = Math.max(array[j], current_max + array[j]);
-                total_max = Math.max(total_max, current_max);
-            }
-
-            System.out.println(total_max);
+            System.out.println(ans);
         }
     }
 }
