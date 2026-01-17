@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
     static int n, m;
     static int[] T;
-    static long[] prefixSums;
+    static long[] pays;
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -23,18 +23,18 @@ public class Main {
         }
 
         if (m > 0) {
-            prefixSums = new long[n];
+            pays = new long[n];
 
-            prefixSums[0] = T[0];
+            pays[0] = T[0];
 
             for (int i = 1; i < n; i++) {
-                prefixSums[i] = prefixSums[i - 1] + T[i];
+                pays[i] = pays[i - 1] + T[i];
                 if (i >= m) {
-                    prefixSums[i] -= T[i - m];
+                    pays[i] -= T[i - m];
                 }
             }
 
-            Arrays.stream(prefixSums)
+            Arrays.stream(pays)
                     .max()
                     .ifPresent(System.out::println);
         } else {
