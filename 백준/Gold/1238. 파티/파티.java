@@ -4,6 +4,7 @@ import java.util.*;
 public class Main {
     static int N, M, X;
     static List<List<Node>> graph;
+    static List<List<Node>> reverseGraph;
 
     static class Node {
         int t, w;
@@ -11,6 +12,34 @@ public class Main {
             this.t = t;
             this.w = w;
         }
+    }
+
+    static int[] dijkstra(int s, List<List<Node>> graph) {
+        int[] distance = new int[N];
+
+        for (int i = 0; i < N; i++) {
+            distance[i] = Integer.MAX_VALUE;
+        }
+
+        PriorityQueue<Node> pq = new PriorityQueue<>((o1, o2) -> o1.w - o2.w);
+
+        distance[s] = 0;
+        pq.add(new Node(s, 0));
+
+        while (!pq.isEmpty()) {
+            Node current = pq.poll();
+
+            if (current.w > distance[current.t]) continue;
+
+            for(Node next : graph.get(current.t)) {
+                if(distance[current.t] + next.w < distance[next.t]) {
+                    distance[next.t] = distance[current.t] + next.w;
+                    pq.add(new Node(next.t, distance[next.t]));
+                }
+            }
+        }
+
+        return distance;
     }
 
     public static void main(String[] args) throws Exception {
@@ -23,9 +52,11 @@ public class Main {
         X = Integer.parseInt(st.nextToken());
 
         graph = new ArrayList<>();
+        reverseGraph = new ArrayList<>();
 
         for (int i = 0; i < N; i++) {
             graph.add(new ArrayList<>());
+            reverseGraph.add(new ArrayList<>());
         }
 
         for (int i = 0; i < M; i++) {
@@ -36,50 +67,16 @@ public class Main {
             int w = Integer.parseInt(st.nextToken());
 
             graph.get(a - 1).add(new Node(b - 1, w));
+            reverseGraph.get(b - 1).add(new Node(a - 1, w));
         }
 
+        int[] distance_to = dijkstra(X - 1, graph);
+        int[] distance_from = dijkstra(X - 1, reverseGraph);
+
         int answer = 0;
-
         for (int i = 0; i < N; i++) {
-            int[] distance = new int[N];
-
-            for (int j = 0; j < N; j++) {
-                if (i != j) distance[j] = Integer.MAX_VALUE;
-            }
-
-            PriorityQueue<Node> pq = new PriorityQueue<>((o1, o2) -> o1.w - o2.w);
-            pq.add(new Node(i, 0));
-
-            while(!pq.isEmpty()) {
-                Node current = pq.poll();
-
-                for (Node next : graph.get(current.t)) {
-                    if (distance[current.t] + next.w < distance[next.t]) {
-                        distance[next.t] = distance[current.t] + next.w;
-                        pq.add(new Node(next.t, distance[next.t]));
-                    }
-                }
-            }
-
-            for (int j = 0; j < N; j++) {
-                if (j != X - 1) distance[j] = Integer.MAX_VALUE;
-            }
-
-            pq.add(new Node(X - 1, distance[X - 1]));
-
-            while(!pq.isEmpty()) {
-                Node current = pq.poll();
-
-                for (Node next : graph.get(current.t)) {
-                    if (distance[current.t] + next.w < distance[next.t]) {
-                        distance[next.t] = distance[current.t] + next.w;
-                        pq.add(new Node(next.t, distance[next.t]));
-                    }
-                }
-            }
-
-            if (distance[i] > answer) {
-                answer = distance[i];
+            if (distance_to[i] + distance_from[i] > answer) {
+                answer = distance_to[i] + distance_from[i];
             }
         }
 
