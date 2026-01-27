@@ -4,6 +4,7 @@ import java.util.*;
 public class Main {
     static int n;
     static int[] xs;
+    static int[] prefixSum;
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -14,6 +15,7 @@ public class Main {
         st = new StringTokenizer(br.readLine());
 
         xs = new int[n];
+        prefixSum = new int[n + 1];
 
         for (int i = 0; i < n; i++) {
             xs[i] = Integer.parseInt(st.nextToken());
@@ -21,10 +23,12 @@ public class Main {
 
         long answer = 0;
 
-        for (int a = 0; a < n; a++) {
-            for (int b = a + 1; b < n; b++) {
-                answer += (long) xs[a] * xs[b];
-            }
+        for (int i = 0; i < n; i++) {
+            prefixSum[i + 1] = prefixSum[i] + xs[i];
+        }
+
+        for (int i = 0; i < n; i++) {
+            answer += (long) xs[i] * (prefixSum[n] - prefixSum[i + 1]);
         }
 
         System.out.println(answer);
