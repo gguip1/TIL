@@ -27,6 +27,8 @@ public class Main {
             }
         }
 
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         for (int i = 0; i < q; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -35,10 +37,14 @@ public class Main {
             int r = Integer.parseInt(st.nextToken());
 
             if (l == 0) {
-                System.out.println(alphabets[alphabet.charAt(0) % 97][r]);
+                bw.write(Integer.toString(alphabets[alphabet.charAt(0) % 97][r]));
             } else {
-                System.out.println(alphabets[alphabet.charAt(0) % 97][r] - alphabets[alphabet.charAt(0) % 97][l - 1]);
+                bw.write(Integer.toString(alphabets[alphabet.charAt(0) % 97][r] - alphabets[alphabet.charAt(0) % 97][l - 1]));
             }
+            bw.newLine();
         }
+
+        bw.flush();
+        bw.close();
     }
 }
