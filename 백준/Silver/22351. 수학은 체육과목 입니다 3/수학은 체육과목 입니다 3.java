@@ -7,7 +7,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         S = br.readLine();
 
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i < 1000; i++) {
             int num = i;
             int index = 0;
 
