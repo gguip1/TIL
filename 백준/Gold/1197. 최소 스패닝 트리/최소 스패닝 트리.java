@@ -7,10 +7,10 @@ public class Main {
     static Edge[] edges;
 
     static int find(int a) {
-        if (P[a] < 1) {
-            return a;
+        if (P[a] > 0) {
+            return P[a] = find(P[a]);
         }
-        return P[a] = find(P[a]);
+        return a;
     }
 
     static boolean union(int a, int b) {
