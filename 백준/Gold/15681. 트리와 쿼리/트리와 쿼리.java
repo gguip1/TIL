@@ -46,9 +46,16 @@ public class Main {
 
         dfs(R);
 
+//        for (int i = 0; i < Q; i++) {
+//            int root = Integer.parseInt(br.readLine());
+//            System.out.println(dp[root]);
+//        }
+        
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < Q; i++) {
             int root = Integer.parseInt(br.readLine());
-            System.out.println(dp[root]);
+            sb.append(dp[root]).append('\n');
         }
+        System.out.print(sb);
     }
 }
