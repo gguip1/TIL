@@ -3,13 +3,13 @@ import java.util.*;
 
 public class Main {
     static int N, R, Q;
-    static List<List<Integer>> tree;
+    static ArrayList<Integer>[] tree;
     static int[] dp;
 
     static int dfs(int root) {
         dp[root] = 1;
 
-        for (int n : tree.get(root)) {
+        for (int n : tree[root]) {
             if (dp[n] == 0) {
                 dp[root] += dfs(n);
             }
@@ -27,9 +27,9 @@ public class Main {
         R = Integer.parseInt(st.nextToken());
         Q = Integer.parseInt(st.nextToken());
 
-        tree = new ArrayList<>();
-        for (int i = 0; i < N + 1; i++) {
-            tree.add(new ArrayList<>());
+        tree = new ArrayList[N + 1];
+        for (int i = 1; i <= N; i++) {
+            tree[i] = new ArrayList<>();
         }
 
         dp = new int[N + 1];
@@ -40,8 +40,8 @@ public class Main {
             int U = Integer.parseInt(st.nextToken());
             int V = Integer.parseInt(st.nextToken());
 
-            tree.get(U).add(V);
-            tree.get(V).add(U);
+            tree[U].add(V);
+            tree[V].add(U);
         }
 
         dfs(R);
@@ -50,7 +50,7 @@ public class Main {
 //            int root = Integer.parseInt(br.readLine());
 //            System.out.println(dp[root]);
 //        }
-        
+
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < Q; i++) {
             int root = Integer.parseInt(br.readLine());
