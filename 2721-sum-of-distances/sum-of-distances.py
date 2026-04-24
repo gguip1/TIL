@@ -7,8 +7,6 @@ class Solution:
                 groups[num] = []
             groups[num].append(idx)
 
-        print(groups)
-
         arr = [0] * len(nums)
         
         for indexes in groups.values():
