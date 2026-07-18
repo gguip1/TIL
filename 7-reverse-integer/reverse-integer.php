@@ -5,15 +5,23 @@ class Solution {
      * @return Integer
      */
     function reverse($x) {
-        $string_x = (string) abs($x);
-        $string_x = strrev($string_x);
-        if ($x < 0) {
-            $answer = -((int)$string_x);
-        } else {
-            $answer = ((int)$string_x);   
+        $resverse = 0;
+        $isNegative = $x < 0;
+        $x = abs($x);
+
+        $minLimit = -2**31;
+        $maxLimit = 2**31 - 1;
+
+        while ($x > 0) {
+            $pop = $x % 10;
+            $x = (int)($x / 10);
+
+            $reversed = $reversed * 10 + $pop;
         }
 
-        if ($answer < -2**31 or $answer > 2**31 - 1) {
+        $answer = $isNegative ? -$reversed : $reversed;
+    
+        if ($answer < $minLimit or $answer > $maxLimit) {
             return 0;
         }
         return $answer;
